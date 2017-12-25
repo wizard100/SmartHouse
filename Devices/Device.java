@@ -4,4 +4,5 @@ import datatTypes.Position;
 
 public interface Device {
     Position getListenPosition();
+    void event();
 }

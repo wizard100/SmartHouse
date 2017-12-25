@@ -24,7 +24,7 @@ public class HomeRestComm {
     final private String EventHappen;
 
     @ResponseBody
-    @RequestMapping(value = "Event/Happen", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "Event/Happen", method = RequestMethod.POST)
     public void eventHappen(HttpServletRequest request, EventDataImp eventDataImp)
     {
         home.event(eventDataImp);

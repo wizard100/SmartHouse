@@ -1,12 +1,16 @@
 package Devices;
 
 import comm.CommToHome;
+import comm.DeviceRestComm;
 import comm.Subscription;
+import datatTypes.EventData;
+import datatTypes.EventDataImp;
 import datatTypes.HomePosition;
+import datatTypes.Position;
 
 public abstract class Agent implements Device , CommToHome, Subscription {
 
-    Agent(HomePosition pos)
+    Agent(Position pos)
     {
         position = pos;
     }
@@ -27,8 +31,8 @@ public abstract class Agent implements Device , CommToHome, Subscription {
 
 
     @Override
-    public void sendEvent() {
-
+    public void sendEvent(EventDataImp eventDataImp) {
+        deviceRestComm.sendEvent(eventDataImp);
     }
 
     @Override
@@ -46,5 +50,6 @@ public abstract class Agent implements Device , CommToHome, Subscription {
 
     }
 
-    HomePosition position;
+    protected Position position;
+    private DeviceRestComm deviceRestComm;
 }

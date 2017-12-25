@@ -1,6 +1,8 @@
 package comm;
 
+import datatTypes.EventDataImp;
+
 public interface CommToHome {
-    void sendEvent();
+    void sendEvent(EventDataImp eventDataImp);
     void reportEvent();
 }

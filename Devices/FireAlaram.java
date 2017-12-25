@@ -1,12 +1,17 @@
 package Devices;
 
+import datatTypes.EventDataImp;
 import datatTypes.HomePosition;
 import datatTypes.Position;
 import org.springframework.stereotype.Controller;
 
+import java.util.Optional;
+
+import static javafx.scene.input.KeyCode.T;
+
 @Controller
 public class FireAlaram extends Agent{
-    FireAlaram(HomePosition pos) {
+    public FireAlaram(Position pos) {
         super(pos);
     }
 
@@ -18,6 +23,12 @@ public class FireAlaram extends Agent{
     @Override
     public void request(long n) {
 
+    }
+
+    void event()
+    {
+        EventDataImp eventDataImp = new EventDataImp(position,"Fire Fire", Optional.empty());
+        sendEvent(eventDataImp);
     }
 
     @Override

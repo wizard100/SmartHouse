@@ -24,17 +24,10 @@ public class DeviceRestComm implements  Subscription{
 
     @RequestMapping(method = RequestMethod.POST)
     public void sendEvent(EventDataImp eventDataImp) {
-        List<MediaType> acceptableMediaTypes = new ArrayList<MediaType>();
-        acceptableMediaTypes.add(MediaType.APPLICATION_JSON);
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.setAccept(acceptableMediaTypes);
-        HttpEntity<EventDataImp> entity = new HttpEntity<EventDataImp>(eventDataImp, headers);
         String url = HouseAddress + EventHappen;
-
         RestTemplate restTemplate = new RestTemplate();
         try {
-            ResponseEntity<EventDataImp> result = restTemplate.exchange(url, HttpMethod.POST, entity, EventDataImp.class);
+            ResponseEntity<EventDataImp> result = restTemplate.postForEntity(url,eventDataImp, EventDataImp.class);
         } catch(Exception e) {
             e.printStackTrace();
         }
